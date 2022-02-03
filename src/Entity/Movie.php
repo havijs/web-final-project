@@ -21,6 +21,9 @@ class Movie
 
     #[ORM\Column(type: 'text', nullable: true)]
     private $description;
+    
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $fileName;
 
     public function getId(): ?int
     {
@@ -59,6 +62,18 @@ class Movie
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getFileName(): ?string
+    {
+        return $this->fileName;
+    }
+
+    public function setFileName(?string $fileName): self
+    {
+        $this->fileName = $fileName;
 
         return $this;
     }
