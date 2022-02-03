@@ -35,7 +35,7 @@ export default function NestedGrid() {
         {movies.map((movie) => {
             return (
                 <Grid item md={4} sm={6} xs={12} key={movie.id}>
-                  <Movie id={movie.id} name={movie.name} year={movie.year} pictureName={movie.picture_name}/>
+                  <Movie id={movie.id} name={movie.name} year={movie.year} fileName={movie.fileName}/>
                 </Grid>
                 )
         })}

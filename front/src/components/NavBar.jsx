@@ -16,7 +16,7 @@ export default function ButtonAppBar() {
                 Movies
             </Link>
           </Typography>
-          <Button color="inherit">
+          <Button style={{color: 'white', textTransform: 'none'}} component={Link} to={'/movie/create'}>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 Add Movie
             </Typography>

@@ -6,14 +6,14 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-export default function Movie({ id, name, year, pictureName }) {
+export default function Movie({ id, name, year, fileName }) {
     return (
         <Card>
             <CardActionArea component={Link} to={'/movie/' + id }>
                 <CardMedia
                     component="img"
                     height="140"
-                    image={pictureName ? "https://localhost:8000/uploads/" + pictureName : './default-movie.png'}
+                    image={fileName ? "https://localhost:8000/uploads/" + fileName : './default-movie.png'}
                     alt="green iguana"
                 />
                 <CardContent>

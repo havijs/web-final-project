@@ -18,7 +18,7 @@ export default function () {
             {movie ?
                 <Box>
                     <Paper sx={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
-                      <img src={movie.picture_name ? "https://localhost:8000/uploads/" + movie.picture_name : '../default-movie.png'} />
+                      <img src={movie.fileName ? "https://localhost:8000/uploads/" + movie.fileName : '../default-movie.png'} />
                     </Paper>
                     <Typography>
                         Name: {movie.name}
