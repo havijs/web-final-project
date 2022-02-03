@@ -4,8 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 export default function ButtonAppBar() {
   return (
@@ -13,7 +12,9 @@ export default function ButtonAppBar() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Movies
+            <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+                Movies
+            </Link>
           </Typography>
           <Button color="inherit">
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
