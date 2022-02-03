@@ -19,11 +19,9 @@ class MovieRepository extends ServiceEntityRepository
         parent::__construct($registry, Movie::class);
     }
 
-    public function findByNameAndYead(int $page, int $limit, ?string $name = null, ?int $year = null)
+    public function findByNameAndYead(?string $name = null, ?int $year = null)
     {
-        $qb = $this->createQueryBuilder('m')
-            ->setFirstResult(($page - 1) * $limit)
-            ->setMaxResults($limit);
+        $qb = $this->createQueryBuilder('m');
         if($name) {
             $qb->andWhere('m.name LIKE :name')
                 ->setParameter('name', '%'.$name.'%');

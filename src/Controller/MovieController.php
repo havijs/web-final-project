@@ -17,17 +17,10 @@ class MovieController extends AbstractController
     #[Route('/api/movies', name: 'movie_list', methods: ['GET'])]
     public function list(Request $request, MovieRepository $movieRepository)
     {
-        $page = $request->query->getInt('page', 1);
-        if($page < 1) {
-            $page = 1;
-        }
-        $limit = $request->query->getInt('limit', 10);
-        if($limit < 0) {
-            $limit = 10;
-        }
         $name = $request->query->get('name', null);
-        $movies = $movieRepository->findByNameAndYead($page, $limit, $name, $request->query->getInt('year', 0));
-        return $this->json($movies);
+        $movies = $movieRepository->findByNameAndYead($name, $request->query->getInt('year', 0));
+        $res = $this->json($movies);
+        return $res;
     }
 
     #[Route('/api/movies/{id}', name: 'movie_item', methods: ['GET'])]
