@@ -5,12 +5,11 @@ import axios from 'axios';
 import Movie from './Movie';
 import { Button, Input, TextField } from '@mui/material';
 
-export default function NestedGrid() {
-  const [movies, setMovies] = useState([]);
+export default function Movies({movies, setMovies}) {
   const [name, setName] = useState('');
   const [year, setYear] = useState('');
   useEffect(async () => {
-      const moviesRes = await axios.get('https://localhost:8000/api/movies');
+      const moviesRes = await axios.get('http://localhost:8000/api/movies');
       setMovies(moviesRes.data);
   }, []);
   const handleFilter = async () => {
@@ -21,7 +20,7 @@ export default function NestedGrid() {
       if(year) {
           params.year = year;
       }
-      const moviesRes = await axios.get('https://localhost:8000/api/movies', {
+      const moviesRes = await axios.get('http://localhost:8000/api/movies', {
           params
       });
       setMovies(moviesRes.data);

@@ -38,4 +38,29 @@ class MovieController extends AbstractController
         $this->em->flush();
         return $this->json($movie);
     }
+
+    #[Route('/api/movies/{id}', name: 'movie_update', methods: ['PUT'])]
+    public function update(int $id, Request $request)
+    {
+        $movie = $this->em->getRepository(Movie::class)->find($id);
+        $movieUpdated = $this->serializer->deserialize($request->getContent(), Movie::class, 'json');
+        $movie->setName($movieUpdated->getName());
+        $movie->setDescription($movieUpdated->getDescription());
+        if($movieUpdated->getFileName()) {
+            $movie->setFileName($movieUpdated->getFileName());
+        }
+        $movie->setYear($movieUpdated->getYear());
+        $this->em->persist($movie);
+        $this->em->flush();
+        return $this->json($movie);
+    }
+
+    #[Route('/api/movies/{id}', name: 'movie_delete', methods: ['DELETE'])]
+    public function delete(int $id, Request $request)
+    {
+        $movie = $this->em->getRepository(Movie::class)->find($id);
+        $this->em->remove($movie);
+        $this->em->flush();
+        return $this->json('', 204);
+    }
 }
