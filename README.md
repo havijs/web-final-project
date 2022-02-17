@@ -17,7 +17,7 @@ php -S localhost:8000
 To setup frontend:
 
 ```bash
-cd frontend
+cd front
 npm install
 npm run start
 ```
